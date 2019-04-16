@@ -1,0 +1,8 @@
+﻿  stdafx.cpp
+  unittest1.cpp
+LINK : warning LNK4075: не учитывается "/INCREMENTAL" из-за спецификации "/LTCG"
+     Создается библиотека C:\Users\User\Desktop\Study\4 семестр\АиСД\lab001\Release\UnitTest1.lib и объект C:\Users\User\Desktop\Study\4 семестр\АиСД\lab001\Release\UnitTest1.exp
+  Создание кода
+  All 393 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  UnitTest1.vcxproj -> C:\Users\User\Desktop\Study\4 семестр\АиСД\lab001\Release\UnitTest1.dll
