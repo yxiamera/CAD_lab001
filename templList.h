@@ -98,18 +98,21 @@ inline void myList<T>::push_front(T value)
 template<class T>
 inline void myList<T>::pop_back()
 {
-	if (first == last) //if there's the only member in dll
-	{
-		delete first; //delete it
-		first = last = nullptr; //and give pointers nullptr value
-	}
-
 	if (last != nullptr) //if dll is not empty
 	{
 		myNode <T> *delNode = last; //create pointer of deleting member
-		last = last->prev; //make previous member last
-		delete delNode; //delete deleting
-		last->next = nullptr; //and clear the tail
+		if (last != first) //if last member is not the only member
+		{
+			last = last->prev; //make previous member last
+			delete delNode; //delete deleting
+			last->next = nullptr; //and clear the tail
+		}
+		else
+		{
+			delete last;
+			first = last = nullptr;
+			delNode = nullptr;
+		}
 	}
 	listSize--; //decrease list size
 }
@@ -117,18 +120,21 @@ inline void myList<T>::pop_back()
 template<class T>
 inline void myList<T>::pop_front()
 {
-	if (first == last)
-	{
-		delete first;
-		first = last = nullptr;
-	}
-
 	if (first != nullptr) //if dll is not empty
 	{
 		myNode <T> *delNode = first; //create pointer of deleting member
-		first = first->next; //make next member first
-		delete delNode; //delete deleting
-		delNode->next = nullptr; //and clear the head
+		if (first == last) //if first member is not the only member
+		{
+			delete first; //delete the only member
+			first = last = nullptr; //clear dll's pointers
+			delNode = nullptr;
+		}
+		else
+		{
+			first = first->next; //make next member first
+			delete delNode; //delete deleting
+			delNode->next = nullptr; //and clear the head
+		}	
 	}
 	listSize--; //decrease list size
 }
@@ -163,8 +169,8 @@ inline void myList<T>::insert(size_t index, T value)
 			first = newNode; //insert the only member
 		//recover links in dll
 		newNode->next = tempNode;
-		tempNode->prev = newNode;
 		newNode->prev = tempNode->prev;
+		tempNode->prev = newNode;
 	}
 	else
 		if ((first == nullptr) && (index == 0)) //if dll is empty and position is the beginning
