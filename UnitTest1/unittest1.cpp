@@ -165,23 +165,25 @@ namespace UnitTest1
 	TEST_CLASS(insertTest)
 	{
 	public:
-		TEST_METHOD(insertInteger_inTheBeginning)
+		TEST_METHOD(insertInteger_inTheBeginningAndInTheEnd)
 		{
 			myList <int> list;
 
 			list.push_back(9);
 			list.insert(0, -1);
 			Assert::IsTrue((!(list.isEmpty())) && (list.at(0) == -1) && (list.get_size() == 2));
+			list.insert(2, 2);
+			Assert::IsTrue((!(list.isEmpty())) && (list.at(2) == 2) && (list.get_size() == 3));
 		}
 
-		TEST_METHOD(insertDouble_inTheEnd)
+		TEST_METHOD(insertDouble_inTheMiddle)
 		{
 			myList <double> list;
 
 			for (int count = 0; count < 6; count++)
 				list.push_back(1.1 + count);
-			list.insert(6, 8);
-			Assert::IsTrue((list.at(6) == 8));
+			list.insert(4, 8);
+			Assert::IsTrue((list.at(4) == 8));
 		}
 
 		TEST_METHOD(insertBoxwood_exception)
