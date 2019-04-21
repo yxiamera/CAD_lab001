@@ -20,14 +20,13 @@ template <class T>
 class myList
 {
 private:
-	
 	//integer containing size of the list
 	unsigned int listSize;
+	//links for list's head and tail
+	myNode <T> *first, *last;
 	//overloading operator for output
 	template <class T> friend ostream& operator << (ostream &s, const myList <T> &list);
 public:
-	//links for list's head and tail
-	myNode <T> *first, *last;
 	//default constructor
 	myList()
 	{
